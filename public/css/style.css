@@ -1062,3 +1062,9 @@ p span {
     cursor: pointer;
     font-weight: bold;
 }
+.login{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

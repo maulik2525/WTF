@@ -19,16 +19,18 @@ class ShopscoController extends Controller
       return view('contact');
     }
 
+      public function contactdata(Request $request)
+    {
+        $validated = $request->validate([
+            'Name'     => 'required|string|max:255',
+            'Email'    => 'required|email|max:255',
+            'Number'   => 'nullable|string|max:20',
+            'Services' => 'nullable|string|max:255',
+            'Message'  => 'required|string',
+        ]);
 
-    public function contactdata(Request $request){
-      $validated = $request->validate([
-        'Name' => 'required|string',
-        'Email' => 'required|email',
-        'Message' => 'required|string',
-      ]);
+        Contact::create($validated);
 
-      Contact::create($validated);
-
-      return back()->with('success','Enquiry submitted successfully!');
+        return back()->with('success', 'Enquiry submitted successfully!');
     }
 } 
